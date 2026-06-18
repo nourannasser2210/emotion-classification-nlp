@@ -1,0 +1,7 @@
+streamlit>=1.32
+tensorflow-cpu>=2.15,<2.18
+numpy>=1.26,<2.0
+pandas>=2.0
+plotly>=5.20
+nltk>=3.8
+huggingface_hub>=0.23

@@ -1,0 +1,28 @@
+# ── Trained model ──
+# The model binary is NOT versioned in git. It's hosted on the Hugging
+# Face Hub and downloaded automatically at runtime (see app.py).
+# If you keep a local copy for development, drop it in artifacts/ —
+# this rule keeps it out of git.
+artifacts/best_model.keras
+*.keras
+*.h5
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ── Streamlit ──
+.streamlit/secrets.toml
+
+# ── Jupyter ──
+.ipynb_checkpoints/
+
+# ── OS / IDE ──
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
