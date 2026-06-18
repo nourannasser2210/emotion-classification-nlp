@@ -104,7 +104,7 @@ emotion-classification-nlp/
 └── README.md
 ```
 
-> **Note on the model file:** `best_model.keras` (~20 MB) is intentionally **not** committed to this repository — trained model binaries are build artifacts, not source code, and don't belong in git history. It's hosted on the [Hugging Face Hub](https://huggingface.co) instead and downloaded automatically the first time the app runs (see [Deployment](#-deployment)).
+> **Note on the model file:** `best_model.keras` (~20 MB) is intentionally **not** committed to this repository — trained model binaries are build artifacts, not source code, and don't belong in git history. It's attached to a [GitHub Release](../../releases) on this same repo instead, and downloaded automatically the first time the app runs (see [Deployment](#-deployment)).
 
 ## 💻 Run locally
 
@@ -124,16 +124,16 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-On first run, the app downloads the trained model from the Hugging Face Hub automatically — no manual setup needed, as long as `HF_REPO_ID` in `app.py` points to a public model repo. For local development you can alternatively drop `best_model.keras` straight into `artifacts/` (it's git-ignored) and the app will use it instead.
+On first run, the app downloads the trained model from this repo's GitHub Release automatically — no manual setup needed. For local development you can alternatively drop `best_model.keras` straight into `artifacts/` (it's git-ignored) and the app will use it instead.
 
 ## ☁️ Deployment
 
-This app is designed to deploy on **Streamlit Community Cloud** for free, with the model itself hosted on the **Hugging Face Hub** (also free) so nothing large ever touches git:
+This app is designed to deploy on **Streamlit Community Cloud** for free, with the model itself attached to a **GitHub Release** on this repo so nothing large ever touches the git history:
 
-1. Create a public model repo on Hugging Face (e.g. `nourannasser2210/emotion-classification-model`) and upload `best_model.keras` to it.
-2. Push this repository to GitHub (model file excluded via `.gitignore`).
+1. On this repo's GitHub page, go to **Releases → Create a new release**, give it the tag `v1.0.0`, and attach `best_model.keras` as a release asset.
+2. Push the rest of this repository to GitHub (the model file stays excluded via `.gitignore`).
 3. On [share.streamlit.io](https://share.streamlit.io), create a new app pointing at this GitHub repo and `app.py`.
-4. Done — Streamlit Cloud installs `requirements.txt` and the app pulls the model from Hugging Face on first launch.
+4. Done — Streamlit Cloud installs `requirements.txt` and the app downloads the model from the Release asset URL on first launch.
 
 ## 🚧 Future improvements
 

@@ -2,13 +2,13 @@ import os
 import time
 import re
 import pickle
+import urllib.request
 
 import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from huggingface_hub import hf_hub_download
 from nltk.corpus import stopwords
 import nltk
 
@@ -244,11 +244,14 @@ if "prediction" not in st.session_state:
 # ─────────────────────────────────────────
 # Small artifacts (tokenizer, label map, max length) ship with the repo.
 # The trained model file is NOT committed to git (it's a binary build
-# artifact, not source code) — it's hosted on the Hugging Face Hub and
-# downloaded once on first run, then cached by Streamlit.
+# artifact, not source code) — it's attached to a GitHub Release on this
+# same repo and downloaded once on first run, then cached by Streamlit.
 ARTIFACTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "artifacts")
-HF_REPO_ID = os.environ.get("HF_REPO_ID", "nourannasser2210/emotion-classification-model")
 MODEL_FILENAME = "best_model.keras"
+MODEL_URL = os.environ.get(
+    "MODEL_URL",
+    "https://github.com/nourannasser2210/emotion-classification-nlp/releases/download/v1.0.0/best_model.keras",
+)
 
 
 @st.cache_resource(show_spinner=False)
@@ -256,12 +259,16 @@ def load_artifacts():
     nltk.download("stopwords", quiet=True)
 
     # Local override for development: drop best_model.keras into artifacts/
-    # and it will be used instead of downloading from the Hub.
+    # and it will be used instead of downloading from the Release.
     local_model_path = os.path.join(ARTIFACTS_DIR, MODEL_FILENAME)
     if os.path.exists(local_model_path):
         model_path = local_model_path
     else:
-        model_path = hf_hub_download(repo_id=HF_REPO_ID, filename=MODEL_FILENAME)
+        cache_dir = os.path.join(os.path.expanduser("~"), ".cache", "emotisense")
+        os.makedirs(cache_dir, exist_ok=True)
+        model_path = os.path.join(cache_dir, MODEL_FILENAME)
+        if not os.path.exists(model_path):
+            urllib.request.urlretrieve(MODEL_URL, model_path)
 
     model = load_model(model_path)
 
