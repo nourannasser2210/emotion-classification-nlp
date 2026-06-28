@@ -21,12 +21,6 @@ EmotiSense is an NLP project that classifies a piece of text into one of **six e
 
 > Type a sentence → the model reads it both forward and backward through two stacked BiLSTM layers → it returns the most likely emotion with a full confidence breakdown.
 
-## 🎥 Live Demo
-
-> 🔗 **[Try EmotiSense on Streamlit Cloud](#)** — *replace this link once your app is deployed (see [Deployment](#-deployment) below).*
-
-<!-- Add a screenshot or GIF of the app here once deployed, e.g.: -->
-<!-- ![App screenshot](screenshots/demo.png) -->
 
 ## ✨ Features
 
