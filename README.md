@@ -145,3 +145,5 @@ GitHub: [@nourannasser2210](https://github.com/nourannasser2210)
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
+## linkedin post :
+https://www.linkedin.com/posts/nouran-nasser22_datascience-machinelearning-deeplearning-activity-7478130752778350594-e8o9?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEdWprcBjyUYsBMA4R5EfNePVsxkCEsNl6w
