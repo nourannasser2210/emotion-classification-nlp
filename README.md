@@ -21,6 +21,8 @@ EmotiSense is an NLP project that classifies a piece of text into one of **six e
 
 > Type a sentence → the model reads it both forward and backward through two stacked BiLSTM layers → it returns the most likely emotion with a full confidence breakdown.
 
+## Live demo:
+https://huggingface.co/spaces/nourannasser22/emotion-detector-nlp
 
 ## ✨ Features
 
