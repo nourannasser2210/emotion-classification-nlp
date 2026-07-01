@@ -1,8 +1,9 @@
-streamlit
-tensorflow==2.19.0
+streamlit>=1.30.0
+tensorflow
 opencv-python-headless
 nltk
 streamlit-option-menu
 numpy
 pandas
 scikit-learn
+plotly
