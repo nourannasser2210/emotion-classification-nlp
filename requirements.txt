@@ -1,6 +1,8 @@
 streamlit
-tensorflow
+tensorflow==2.19.0
+opencv-python-headless
+nltk
+streamlit-option-menu
 numpy
 pandas
-plotly
-nltk
+scikit-learn
